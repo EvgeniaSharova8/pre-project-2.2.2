@@ -13,10 +13,10 @@
         <th>Year</th>
     </tr>
 
-    <tr th:each = "car : ${cars}">
-        <td th:utext = "${car.firm}"></td>
-        <td th:utext = "${car.model}"></td>
-        <td th:utext = "${car.year}"></td>
+    <tr th:each="car : ${cars}">
+        <td th:utext="${car.firm}"></td>
+        <td th:utext="${car.model}"></td>
+        <td th:utext="${car.year}"></td>
     </tr>
 </table>
 </body>

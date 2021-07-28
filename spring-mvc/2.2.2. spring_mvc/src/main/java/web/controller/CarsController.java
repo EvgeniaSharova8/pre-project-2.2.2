@@ -3,6 +3,7 @@ package web.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import web.model.Car;
 import web.service.CarService;
 
@@ -19,16 +20,8 @@ public class CarsController {
     }
 
     @GetMapping(value = "/cars")
-    public String printCars(HttpServletRequest parameter, ModelMap modelMap) {
-        String requestParameter = parameter.getParameter("count");
-        int count;
-        if (requestParameter != null) {
-            count = Integer.parseInt(requestParameter);
-        } else {
-            count = 5;
-        }
-        List<Car> carList = carService.getCarList(count);
-        modelMap.addAttribute("cars", carList);
+    public String printCars(@RequestParam(value = "count", required = false, defaultValue = "5") int parameter, ModelMap modelMap) {
+        modelMap.addAttribute("cars", carService.getCarList(parameter));
         return "cars";
     }
 }

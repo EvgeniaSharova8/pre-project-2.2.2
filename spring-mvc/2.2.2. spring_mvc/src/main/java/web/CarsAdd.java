@@ -25,7 +25,6 @@ public class CarsAdd {
             carList.remove(carList.size() - 1);
         }
 
-
         return carList;
     }
 }
